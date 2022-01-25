@@ -9,7 +9,7 @@ pub fn wat_to_wasm(input_path: String, output_path: String) {
 
     match binary {
         Ok(binary) => {
-            
+
             let write_result = write(&output_path, binary);
             if write_result.is_err() {
                 panic!("failed to write {}", output_path)
