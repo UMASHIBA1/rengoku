@@ -3,15 +3,7 @@ use std::fs::{read, write, create_dir_all};
 
 pub fn wat_to_wasm(input_path: String, output_path: String) {
 
-    let wat = match read(&input_path){
-        Ok(wat) => wat,
-        Err(err) => {
-            panic!("failed to load {} file", input_path)
-        }
-    };
-
-
-    let binary = wat::parse_file(wat);
+    let binary = wat::parse_file(&input_path);
 
     match binary {
         Ok(binary) => {
@@ -28,7 +20,7 @@ pub fn wat_to_wasm(input_path: String, output_path: String) {
 
         },
         Err(err) => {
-                panic!("failed to compile {}", input_path)
+                panic!("failed to compile {} by this error: {}", input_path, err)
 
         }
     };
