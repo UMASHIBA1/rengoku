@@ -26,7 +26,7 @@ impl WasmBuffer {
     pub fn read_bytes(&mut self, size: usize) -> Result<Vec<u8>, WasmBufferError> {
         let will_read_end_position = self.position + size;
         if will_read_end_position <= self.buffer.len() {
-            let reading_bytes = self.buffer[self.position..will_read_end_position];
+            let reading_bytes = self.buffer[self.position..will_read_end_position].to_vec();
             self.position += size;
             Ok(reading_bytes.to_vec())
         } else {

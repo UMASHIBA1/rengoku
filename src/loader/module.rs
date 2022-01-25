@@ -55,9 +55,9 @@ mod tests {
     const TEST_DATA_BASE_URL: &str = "./test_data/";
 
     fn load_and_run_test(file_path: String, expected_module: Module) {
-        let wasm = match read(file_path) {
+        let wasm = match read(&file_path) {
             Ok(file) => file,
-            Err(err) => panic!("can't read file: {}", file_path)
+            Err(err) => panic!("can't read file: {}", &file_path)
         };
         let mut buffer = create_wasm_buffer(wasm);
         let mut module = Module::new(None, None);
