@@ -48,11 +48,11 @@ impl Module {
 #[cfg(test)]
 mod tests {
     use crate::utils::wat_to_wasm::wat_to_wasm;
-    use crate::loader::module::Module;
     use crate::core::wasm_buffer::create_wasm_buffer;
+    use crate::loader::module::module::Module;
     use std::fs::{read};
 
-    const TEST_DATA_BASE_URL: &str = "./src/loader/test_data/";
+    const TEST_DATA_BASE_URL: &str = "./src/loader/module/test_data/";
 
     fn load_and_run_test(file_path: String, expected_module: Module) {
         let wasm = match read(&file_path) {
